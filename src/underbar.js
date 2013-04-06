@@ -20,7 +20,17 @@ var _ = {};
   // Like last, but for the first elements
   _.first = function(array, n) {
     // TIP: you can often re-use similar functions in clever ways, like so:
-    return _.last(array.reverse(), n);
+    var tempArray = []
+    if (n === undefined || n === 1) {
+      // return _.last(array.reverse(), n);
+      return array.shift();
+    } else {
+      for (var i = 0; i < (Math.min(n, array.length)); i++) {
+        tempArray.push(array[i]);
+      }
+    }
+    return tempArray;
+
   };
 
 
