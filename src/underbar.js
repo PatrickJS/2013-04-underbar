@@ -5,6 +5,16 @@ var _ = {};
   // Return an array of the last n elements of an array. If n is undefined,
   // return just the last element.
   _.last = function(array, n) {
+    if (n === undefined || n === 1) {
+      return array.pop();
+    } else if (Array.isArray(array) === false) {
+      var tempArray = [];
+      for (var i = (array.length - 1); i >= n; i--) {
+        tempArray.unshift(array[i]);
+      }
+      return tempArray;
+    }
+    return array.splice(-n,n);
   };
 
   // Like last, but for the first elements
