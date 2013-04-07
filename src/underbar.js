@@ -89,6 +89,14 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    // console.log(array);
+    var answers = [];
+    _.each(array, function(index) {
+      if (_.indexOf(answers, index) == -1) {
+        answers.push(index);
+      }
+    });
+    return answers;
   };
 
 

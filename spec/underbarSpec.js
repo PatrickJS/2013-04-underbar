@@ -128,7 +128,7 @@ describe("reject", function() {
     expect(evens).to.eql([2, 4, 6]);
   });
 });
-/*
+
 describe("uniq", function() {
   it("should return all unique values contained in an unsorted array", function() {
     var list = [1, 2, 1, 3, 1, 4];
@@ -153,7 +153,7 @@ describe("map", function() {
     expect(doubled).to.eql([2, 4, 6]);
   });
 });
-
+/*
 describe("pluck", function() {
   it("should return values contained at a user-defined property", function() {
     var people = [
