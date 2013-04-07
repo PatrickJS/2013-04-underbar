@@ -30,7 +30,6 @@ var _ = {};
       }
     }
     return tempArray;
-
   };
 
 
@@ -66,6 +65,13 @@ var _ = {};
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, iterator) {
+    var answers = [];
+    _.each(collection, function(array) {
+      if (iterator(array)) {
+        answers.push(array);
+      };
+    });
+    return answers;
   };
 
   // Return all elements of an array that don't pass a truth test.
