@@ -78,6 +78,13 @@ var _ = {};
   _.reject = function(collection, iterator) {
     // TIP: see if you can re-use _.select() here, without simply
     // copying code in and modifying it
+    var answers = [];
+    _.each(collection, function(array) {
+      if (!iterator(array)) {
+        answers.push(array);
+      };
+    });
+    return answers;
   };
 
   // Produce a duplicate-free version of the array.
