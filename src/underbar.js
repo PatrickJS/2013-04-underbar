@@ -108,6 +108,11 @@ var _ = {};
 
   // Return the results of applying an iterator to each element.
   _.map = function(array, iterator) {
+    var answers = [];
+    for (var i = 0; i < array.length; i++) {
+      answers[i] = iterator(array[i])
+    };
+    return answers;
   };
 
   /*
