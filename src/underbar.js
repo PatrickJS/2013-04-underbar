@@ -37,8 +37,17 @@ var _ = {};
   _.each = function(obj, iterator) {
     // console.log(obj);
     // console.log(iterator);
-    for (var i = 0; i < obj.length; i++) {
-      iterator(obj[i],i, obj)
+    if(!obj) return;
+    if(obj.length){
+      for (var i = 0; i < obj.length; i++) {
+        iterator(obj[i],i, obj)
+      }
+    } else {
+      for(var key in obj){
+        if (obj.hasOwnProperty(key)) {
+          iterator(obj[key], key, obj);
+        }
+      }
     }
 
   };
@@ -133,9 +142,9 @@ var _ = {};
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName) {
 
-  return _.map(list, function(value){
-  return value[methodName].apply(value);
-  });
+    return _.map(list, function(value){
+      return value[methodName] ? value[methodName].apply(value) : methodName.apply(value);
+    });
 
   };
 
