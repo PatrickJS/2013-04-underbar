@@ -162,6 +162,17 @@ var _ = {};
   //   }, 0); // should be 6
   //
   _.reduce = function(obj, iterator, initialValue) {
+  // Reduces an array or object to a single value by repetitively calling
+  // iterator(previousValue, item) for each item. previousValue should be
+  // the return value of the previous iterator call.
+  // console.log(obj);
+  // console.log(iterator);
+  // console.log(initialValue);
+  var answer = initialValue || 0;
+  _.each(obj, function(stuff) {
+    answer = iterator(answer, stuff)
+  });
+  return answer;
   };
 
   // Determine if the array or object contains a given value (using `===`).
