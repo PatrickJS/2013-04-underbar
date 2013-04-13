@@ -214,8 +214,47 @@ var _ = {};
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
-  _.any = function(obj, iterator) {
+  _.any = function(objects, iterator) {
     // TIP: re-use every() here
+    var objects = objects || function(stuff) {
+       return Boolean(stuff);
+     };
+    _.each(objects, function(obj) {
+      if (iterator(obj)) {
+        return true;
+      }
+    });
+    return false;
+
+
+    // console.log(iterator);
+    // console.log("------------------")
+
+    //   //     if (!iterator && objects[i]) {
+    //   //   return true;
+    //   // }
+    //   if (iterator == undefined && objects.length) {
+    //     console.log("first one");
+    //     // if (_.contains(objects, String())) {
+    //     //   return true;
+    //     // }
+    //     return _.contains(objects, true);
+
+    //   } else {
+    //     for (var i = 0; i < objects.length; i++) {
+    //       console.log(objects[i])
+    //       console.log(iterator(objects[i]))
+    //       // if (!iterator) {
+    //         // return false;
+    //       // }
+    //       if (iterator(objects[i])) {
+    //         return true;
+    //       }
+    //     };
+    //     return false;
+    //   }
+    //   return false;
+    // return !_.every(onjects, iterator);
   };
 
 
@@ -296,6 +335,7 @@ var _ = {};
 
   // Shuffle an array.
   _.shuffle = function(obj) {
+
   };
 
   /* (End of pre-course curriculum) */
