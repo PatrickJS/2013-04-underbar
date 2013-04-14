@@ -1,5 +1,5 @@
 var returnArguments = function(){ return arguments; };
-
+/*
 describe("last", function() {
   it("should pull the last element from an array", function() {
     expect(_.last([1,2,3])).to.equal(3);
@@ -311,7 +311,7 @@ describe("any", function() {
     expect(_.any([0], passThrough)).to.equal(false);
   });
 });
-/*
+
 describe("extend", function() {
   it("should extend an object with the attributes of another", function() {
     var extended = _.extend({}, {a:'b'});
@@ -344,6 +344,7 @@ describe("extend", function() {
   });
 });
 
+*/
 describe("defaults", function() {
   var result, options;
 
@@ -367,7 +368,7 @@ describe("defaults", function() {
     expect(options.word).to.equal("word");
   });
 });
-
+/*
 describe("once", function() {
   it("should only run a user-defined function if it hasn't been run before", function() {
     var num = 0;

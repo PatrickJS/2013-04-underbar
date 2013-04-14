@@ -20,7 +20,7 @@ var _ = {};
   // Like last, but for the first elements
   _.first = function(array, n) {
     // TIP: you can often re-use similar functions in clever ways, like so:
-    var tempArray = []
+    var tempArray = [];
     if (n === undefined || n === 1) {
       // return _.last(array.reverse(), n);
       return array.shift();
@@ -29,6 +29,9 @@ var _ = {};
         tempArray.push(array[i]);
       }
     }
+
+    // array = [].slice.call(array);
+    // return _.last(array.reverse(), n).reverse()
     return tempArray;
   };
 
@@ -40,7 +43,7 @@ var _ = {};
     if(!obj) return;
     if(obj.length){
       for (var i = 0; i < obj.length; i++) {
-        iterator(obj[i],i, obj)
+        iterator(obj[i],i, obj);
       }
     } else {
       for(var key in obj){
@@ -78,7 +81,7 @@ var _ = {};
     _.each(collection, function(array) {
       if (iterator(array)) {
         answers.push(array);
-      };
+      }
     });
     return answers;
   };
@@ -91,7 +94,7 @@ var _ = {};
     _.each(collection, function(array) {
       if (!iterator(array)) {
         answers.push(array);
-      };
+      }
     });
     return answers;
   };
@@ -119,8 +122,8 @@ var _ = {};
   _.map = function(array, iterator) {
     var answers = [];
     for (var i = 0; i < array.length; i++) {
-      answers[i] = iterator(array[i])
-    };
+      answers[i] = iterator(array[i]);
+    }
     return answers;
   };
 
@@ -170,7 +173,7 @@ var _ = {};
   // console.log(initialValue);
   var answer = initialValue || 0;
   _.each(obj, function(stuff) {
-    answer = iterator(answer, stuff)
+    answer = iterator(answer, stuff);
   });
   return answer;
   };
@@ -197,6 +200,9 @@ var _ = {};
     // console.log("------")
     // console.log("")
     // var answer = true
+    iterator = iterator || function(stuff) {
+      return stuff;
+    };
     for (var i = 0; i < objects.length; i++) {
       if (!iterator(objects[i])) {
         return false;
@@ -215,16 +221,28 @@ var _ = {};
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.any = function(objects, iterator) {
-    // TIP: re-use every() here
-    var objects = objects || function(stuff) {
-       return Boolean(stuff);
-     };
-    _.each(objects, function(obj) {
-      if (iterator(obj)) {
-        return true;
-      }
+    // debugger;
+    iterator = iterator || function(stuff) {
+      return stuff;
+    };
+    return ! _.every(objects, function(object){
+      return ! iterator(object);
     });
-    return false;
+
+
+
+
+
+    // TIP: re-use every() here
+    // var objects = objects || function(stuff) {
+    //    return Boolean(stuff);
+    //  };
+    // _.each(objects, function(obj) {
+    //   if (iterator(obj)) {
+    //     return true;
+    //   }
+    // });
+    // return false;
 
 
     // console.log(iterator);
@@ -267,14 +285,22 @@ var _ = {};
   //
   // Example:
   //   var obj1 = {key1: "something"};
-  //   _.extend(obj1, {
-  //     key2: "something new",
-  //     key3: "something else new"
-  //   }, {
-  //     bla: "even more stuff"
-  //   }); // obj1 now contains key1, key2, key3 and bla
-  //
+  //   _.extend(obj1, {key2: "something new", key3: "something else new"}, {bla: "even more stuff"} );
+   // obj1 now contains key1, key2, key3 and bla
+
+  // {}, {a:'b'}
   _.extend = function(obj) {
+    for (var i = 1; i < arguments.length; i++) {
+      for (var key in arguments[i]) {
+        obj[key] = arguments[i][key];
+      }
+    }
+    // for (var key in arguments[1]) {
+    //   // throw arguments[1][0];
+    //   // debugger;
+    //   obj[key] = arguments[1][key];
+    // }
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
