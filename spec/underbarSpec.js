@@ -1,5 +1,5 @@
 var returnArguments = function(){ return arguments; };
-/*
+
 describe("last", function() {
   it("should pull the last element from an array", function() {
     expect(_.last([1,2,3])).to.equal(3);
@@ -368,7 +368,7 @@ describe("defaults", function() {
     expect(options.word).to.equal("word");
   });
 });
-/*
+
 describe("once", function() {
   it("should only run a user-defined function if it hasn't been run before", function() {
     var num = 0;
@@ -403,7 +403,7 @@ describe("memoize", function() {
     expect(fastPassThrough('toString')).to.equal('toString');
   });
 });
-*/
+
 describe("delay", function() {
   var clock, delayed, callback;
 
