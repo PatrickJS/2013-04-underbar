@@ -216,6 +216,13 @@ var _ = {};
     //   }
     //   return iterator(item);
     // }, false);
+
+  //   return _.reduce(objects, function(obj, item){
+  //     if(obj){
+  //       return true;
+  //     }
+  //     return iterator(item);
+  //   }, false);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
@@ -351,6 +358,16 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+  // function that is called by a function
+  var cache = {};
+
+  return function() {
+      if (cache.hasOwnProperty(arguments)) {
+        return cache[arguments];
+      } else {
+        return cache[arguments] = func.apply(this, arguments);
+      }
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
