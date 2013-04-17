@@ -389,10 +389,40 @@ var _ = {};
     return returnArray;
   };
   // Shuffle an array.
-  _.shuffle = function(obj) {
-
+  // _.shuffle = function(obj) {
+  //   var returnSet = [];
+  //   while(obj.length) {
+  //     var index = ~~(Math.Random() * (obj.length + 1));
+  //       returnSet.push(obj[index]);
+  //       obj.slice();
+  //   }
+  //   return returnSet;
+  // };
+  // _.shuffle = function(obj) {
+  //   var returnSet = [];
+  //   while(obj.length) {
+  //     var index = ~~(Math.Random() * (obj.length + 1));
+  //       returnSet.push(obj[index]);
+  //       // obj.slice();
+  //     var newObj = [];
+  //     for (var i = 0; i < obj.length; i++) {
+  //       if(i !== index){
+  //         newObj.push(obj[i]);
+  //       }
+  //     }
+  //     obj = newObj;
+  //   }
+  //   return returnSet;
+  // };
+    _.shuffle = function(obj) {
+    var returnSet = [];
+    while(obj.length) {
+      var index = ~~(Math.Random() * (obj.length + 1));
+      returnSet.push(obj[index]);
+      delete obj[index];
+    }
+    return returnSet;
   };
-
   /* (End of pre-course curriculum) */
 
   // Sort the object's values by a criterion produced by an iterator.
