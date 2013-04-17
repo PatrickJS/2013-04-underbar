@@ -210,12 +210,6 @@ var _ = {};
 
     }
     return true;
-    // return _.reduce(objects, function(obj, item){
-    //   if(obj){
-    //     return true;
-    //   }
-    //   return iterator(item);
-    // }, false);
 
   //   return _.reduce(objects, function(obj, item){
   //     if(obj){
@@ -387,7 +381,13 @@ var _ = {};
   /*
    * Advanced collection operations
    */
-
+  _.range = function(topNum) {
+    var returnArray = [];
+    for (var i = 0; i < topNum.length; i++) {
+      returnArray.push(i);
+    }
+    return returnArray;
+  };
   // Shuffle an array.
   _.shuffle = function(obj) {
 
